@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CostomButtom extends StatelessWidget {
-  const CostomButtom({super.key, required this.text, required this.ontap});
+  const CostomButtom(
+      {super.key,
+      required this.text,
+      required this.ontap,
+      this.Isloading = false});
   final String text;
   final VoidCallback? ontap;
+  final bool Isloading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,13 +21,19 @@ class CostomButtom extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Text(
-          text,
-          style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-              color: Color(0xff2b475e)),
-        ),
+        child: Isloading
+            ? const Center(
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              )
+            : Text(
+                text,
+                style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xff2b475e)),
+              ),
       ),
     );
   }
