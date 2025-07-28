@@ -14,28 +14,28 @@ class CostomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 8),
+      padding: const EdgeInsets.only(top: 8),
       child: TextFormField(
         validator: (data) {
           if (data!.isEmpty) {
             return ' field is required';
           }
         },
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
         ),
         onChanged: onchange,
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: TextStyle(color: const Color.fromARGB(255, 221, 214, 214)),
+          hintStyle: const TextStyle(color:  Color.fromARGB(255, 221, 214, 214)),
           labelText: Label,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.white),
+            borderSide:const  BorderSide(color: Colors.white),
           ),
         ),
       ),
@@ -66,14 +66,14 @@ class _CostomTextFormFieldPasswordState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 8),
+      padding: const EdgeInsets.only(top: 8),
       child: TextFormField(
         validator: (data) {
           if (data!.isEmpty) {
             return ' field is required';
           }
         },
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
         ),
         obscureText: IsHidden,
@@ -90,15 +90,15 @@ class _CostomTextFormFieldPasswordState
             ),
           ),
           hintText: widget.hint,
-          hintStyle: TextStyle(color: const Color.fromARGB(255, 221, 214, 214)),
+          hintStyle:const  TextStyle(color: const Color.fromARGB(255, 221, 214, 214)),
           labelText: widget.Label,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle:const  TextStyle(color: Colors.white),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.white),
+            borderSide: const BorderSide(color: Colors.white),
           ),
         ),
       ),

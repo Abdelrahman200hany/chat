@@ -1,4 +1,4 @@
-import 'package:chatapp/cores/costomwidgets/textfieldchatview.dart';
+
 import 'package:chatapp/firebase_options.dart';
 import 'package:chatapp/views/chat.dart';
 import 'package:chatapp/views/home.dart';
@@ -22,9 +22,9 @@ class ChatApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        RegisterView.RegiterId: (context) => RegisterView(),
-        SignInView.SignInId: (context) => SignInView(),
-        HomeView.HomeViewId: (context) => HomeView(),
+        RegisterView.RegiterId: (context) => const RegisterView(),
+        SignInView.SignInId: (context) => const SignInView(),
+        HomeView.HomeViewId: (context) => const HomeView(),
         ChatView.id: (context) => ChatView(),
         
       },

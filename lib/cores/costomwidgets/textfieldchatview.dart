@@ -7,9 +7,8 @@ class CostomtextfieldChat extends StatelessWidget {
   CostomtextfieldChat({super.key, required this.Email});
   var Email;
 
-
   CollectionReference messages =
-      FirebaseFirestore.instance.collection(KMessageCollection);
+      FirebaseFirestore.instance.collection(kMessageCollection);
   TextEditingController controller = TextEditingController();
   final scrollController = ResponseMessages.scrollController;
 
@@ -27,7 +26,8 @@ class CostomtextfieldChat extends StatelessWidget {
           });
           controller.clear();
           scrollController.animateTo(0,
-              duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+              duration: const Duration(seconds: 1),
+              curve: Curves.fastOutSlowIn);
         },
         decoration: InputDecoration(
             suffixIcon: Padding(
@@ -48,25 +48,25 @@ class CostomtextfieldChat extends StatelessWidget {
                     // to clear the text in text form
                     controller.clear();
                     scrollController.animateTo(0,
-                        duration: Duration(seconds: 1),
+                        duration: const Duration(seconds: 1),
                         curve: Curves.fastOutSlowIn);
                   }
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.send,
-                  color: KPrimaryColor,
+                  color: kPrimaryColor,
                 ),
               ),
             ),
             hintText: 'أرسال ',
-            hintStyle: TextStyle(color: KPrimaryColor),
+            hintStyle: const TextStyle(color: kPrimaryColor),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
             ),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide(
-                  color: KPrimaryColor,
+                borderSide: const BorderSide(
+                  color: kPrimaryColor,
                 ))),
       ),
     );

@@ -4,7 +4,7 @@ import 'package:chatapp/cores/keys/keys.dart';
 import 'package:flutter/material.dart';
 
 class ChatView extends StatelessWidget {
-  ChatView({super.key});
+  const ChatView({super.key});
 
   static String id = 'Chatview';
 
@@ -14,11 +14,11 @@ class ChatView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: KPrimaryColor,
+        backgroundColor: kPrimaryColor,
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(Kloge, height: 36, width: 36),
+            Image.asset(kloge, height: 36, width: 36),
             const Text(
               ' chat',
               style: TextStyle(

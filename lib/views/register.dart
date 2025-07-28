@@ -9,7 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class RegisterView extends StatefulWidget {
-  RegisterView({super.key});
+  const RegisterView({super.key});
   static String RegiterId = 'register';
 
   @override
@@ -30,7 +30,7 @@ class _RegisterViewState extends State<RegisterView> {
     return ModalProgressHUD(
       inAsyncCall: Isloading,
       child: Scaffold(
-        backgroundColor: KPrimaryColor,
+        backgroundColor: kPrimaryColor,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -44,7 +44,7 @@ class _RegisterViewState extends State<RegisterView> {
                       Image.asset('assets/images/scholar.png'),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02),
-                      Text(
+                  const     Text(
                         'Scholar Chat ',
                         style: TextStyle(
                             fontFamily: 'Pacifico-Regular',
@@ -54,7 +54,7 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.05),
-                      Align(
+                   const    Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'Register ',
@@ -122,7 +122,7 @@ class _RegisterViewState extends State<RegisterView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                      const     Text(
                             "i have an account ! ",
                             style: TextStyle(
                                 color: Colors.white,

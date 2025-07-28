@@ -1,6 +1,6 @@
 import 'package:chatapp/cores/costomwidgets/chatmessage.dart';
 import 'package:chatapp/cores/keys/keys.dart';
-import 'package:chatapp/cores/messageModel.dart';
+import 'package:chatapp/cores/message_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class ResponseMessages extends StatelessWidget {
   var email;
   static ScrollController scrollController = ScrollController();
   Stream<QuerySnapshot> collectionStream = FirebaseFirestore.instance
-      .collection(KMessageCollection)
+      .collection(kMessageCollection)
       .orderBy('createdAt', descending: true)
       .snapshots();
 
@@ -49,16 +49,16 @@ class ResponseMessages extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: Icon(Icons.exit_to_app_outlined),
+                icon:const  Icon(Icons.exit_to_app_outlined),
               ),
-              content: Text(
+              content:const  Text(
                 'sorry there was an error',
                 style: TextStyle(color: Colors.white),
               ),
             ),
           );
         } else {
-          return Center(
+          return const Center(
             child: SizedBox(
               height: 50,
               width: 50,

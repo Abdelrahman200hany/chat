@@ -8,7 +8,7 @@ import 'package:chatapp/views/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -29,7 +29,7 @@ class _SignInViewState extends State<SignInView> {
       color: Colors.black,
       inAsyncCall: Isloading,
       child: Scaffold(
-        backgroundColor: KPrimaryColor,
+        backgroundColor: kPrimaryColor,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -43,7 +43,7 @@ class _SignInViewState extends State<SignInView> {
                       Image.asset('assets/images/scholar.png'),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02),
-                      Text(
+                  const     Text(
                         'Scholar Chat ',
                         style: TextStyle(
                             fontFamily: 'Pacifico-Regular',
@@ -53,7 +53,7 @@ class _SignInViewState extends State<SignInView> {
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.05),
-                      Align(
+                  const     Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'Sign in ',
@@ -128,7 +128,7 @@ class _SignInViewState extends State<SignInView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                       const    Text(
                             "don't have an accont ? ",
                             style: TextStyle(
                                 color: Colors.white,
