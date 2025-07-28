@@ -24,7 +24,7 @@ class CostomButtom extends StatelessWidget {
         child: Isloading
             ? const Center(
                 child: CircularProgressIndicator(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               )
             : Text(
