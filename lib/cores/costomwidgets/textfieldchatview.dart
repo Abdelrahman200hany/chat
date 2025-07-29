@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class CostomtextfieldChat extends StatelessWidget {
-  CostomtextfieldChat({super.key, required this.Email});
-  var Email;
+  CostomtextfieldChat({super.key, required this.email});
+  var email;
 
   CollectionReference messages =
       FirebaseFirestore.instance.collection(kMessageCollection);
@@ -22,7 +22,7 @@ class CostomtextfieldChat extends StatelessWidget {
           messages.add({
             'message': value,
             "createdAt": DateTime.now(),
-            'id': Email,
+            'id': email,
           });
           controller.clear();
           scrollController.animateTo(0,
@@ -43,7 +43,7 @@ class CostomtextfieldChat extends StatelessWidget {
                       // to add the time of sent message to use it after
                       "createdAt": DateTime.now(),
                       // to add email to the message to can  use it after
-                      'id': Email,
+                      'id': email,
                     });
                     // to clear the text in text form
                     controller.clear();

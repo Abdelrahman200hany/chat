@@ -37,7 +37,7 @@ class ChatView extends StatelessWidget {
           ),
           //to write  a message to firebase
           CostomtextfieldChat(
-            Email: email,
+            email: email,
           ),
         ],
       ),
