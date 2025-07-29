@@ -43,87 +43,96 @@ class _SignInViewState extends State<SignInView> {
                 }
               },
               builder: (context, state) {
-                return Form(
-                  key: formkey,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset('assets/images/scholar.png'),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02),
-                        const Text(
-                          'Scholar Chat ',
-                          style: TextStyle(
-                              fontFamily: 'Pacifico-Regular',
-                              color: Colors.white,
-                              fontSize: 32,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.05),
-                        const Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'Sign in ',
-                            textAlign: TextAlign.left,
+                return AbsorbPointer(
+                  absorbing: state is SignInLoading ? true : false,
+                  child: Form(
+                    key: formkey,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/scholar.png'),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          const Text(
+                            'Scholar Chat ',
                             style: TextStyle(
+                                fontFamily: 'Pacifico-Regular',
                                 color: Colors.white,
                                 fontSize: 32,
                                 fontWeight: FontWeight.w600),
                           ),
-                        ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02),
-                        CostomTextFormField(
-                          onchange: (data) {
-                            email = data;
-                          },
-                          hint: 'Abdo123@gamil.com',
-                          Label: 'Email',
-                        ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02),
-                        CostomTextFormFieldPassword(
-                          hint: 'xxxxxxxxxxxxx',
-                          Label: 'password',
-                          onchange: (data) {
-                            password = data;
-                          },
-                        ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02),
-                        CostomButtom(
-                            Isloading: state is SignInLoading ? true : false,
-                            text: 'Sign in',
-                            ontap: () async {
-                              if (formkey.currentState!.validate()) {
-                                BlocProvider.of<SignInCubit>(context)
-                                    .SignIn(email: email!, password: password!);
-                              }
-                            }),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "don't have an accont ? ",
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.05),
+                          const Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Sign in ',
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400),
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.w600),
                             ),
-                            CostomTextButtom(
-                              text: 'ٌRegister',
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, RegisterView.RegiterId);
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
+                          ),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          CostomTextFormField(
+                            onchange: (data) {
+                              email = data;
+                            },
+                            hint: 'Abdo123@gamil.com',
+                            Label: 'Email',
+                          ),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          CostomTextFormFieldPassword(
+                            hint: 'xxxxxxxxxxxxx',
+                            Label: 'password',
+                            onchange: (data) {
+                              password = data;
+                            },
+                          ),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          CostomButtom(
+                              Isloading: state is SignInLoading ? true : false,
+                              text: 'Sign in',
+                              ontap: () async {
+                                if (formkey.currentState!.validate()) {
+                                  BlocProvider.of<SignInCubit>(context).SignIn(
+                                      email: email!, password: password!);
+                                }
+                              }),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.01),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "don't have an accont ? ",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              CostomTextButtom(
+                                text: 'ٌRegister',
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, RegisterView.RegiterId);
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -134,5 +143,4 @@ class _SignInViewState extends State<SignInView> {
       ),
     );
   }
-
 }
