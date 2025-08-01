@@ -1,8 +1,10 @@
 import 'package:chatapp/cores/costomwidgets/chatmessage.dart';
 import 'package:chatapp/cores/keys/keys.dart';
 import 'package:chatapp/cores/message_model.dart';
+import 'package:chatapp/cubit/chat/chat_cubit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ResponseMessages extends StatelessWidget {
   ResponseMessages({
@@ -19,55 +21,19 @@ class ResponseMessages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: StreamBuilder<QuerySnapshot>(
-          
-      stream: collectionStream,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          List<MessageModel> messageslist = [];
-          for (int i = 0; i < snapshot.data!.docs.length; i++) {
-            messageslist.add(
-              MessageModel.FromJeson(snapshot.data!.docs[i]),
-            );
-          }
-          return ListView.builder(
-              reverse: true,
-              controller: scrollController,
-              itemCount: messageslist.length,
-              itemBuilder: (context, index) => messageslist[index].id == email
-                  ? ChatMessage(
-                      messages: messageslist[index],
-                    )
-                  : ChatMessageForFriend(messages: messageslist[index]));
-        } else if (snapshot.hasError) {
-          return Dialog(
-            child: AlertDialog( 
-              
-              backgroundColor: Colors.black,
-              title: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon:const  Icon(Icons.exit_to_app_outlined),
-              ),
-              content:const  Text(
-                'sorry there was an error',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          );
-        } else {
-          return const Center(
-            child: SizedBox(
-              height: 50,
-              width: 50,
-              child: CircularProgressIndicator(
-                color: Colors.black12,
-              ),
-            ),
-          );
-        }
+    return Expanded(child: BlocBuilder<ChatCubit, ChatState>(
+      builder: (context, state) {
+        List<MessageModel> messageList =
+            BlocProvider.of<ChatCubit>(context).messageslist;
+        return ListView.builder(
+            reverse: true,
+            controller: scrollController,
+            itemCount: messageList.length,
+            itemBuilder: (context, index) => messageList[index].id == email
+                ? ChatMessage(
+                    messages: messageList[index],
+                  )
+                : ChatMessageForFriend(messages: messageList[index]));
       },
     ));
   }

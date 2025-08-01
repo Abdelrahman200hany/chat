@@ -3,6 +3,7 @@ import 'package:chatapp/cores/costomwidgets/buttoms.dart';
 import 'package:chatapp/cores/costomwidgets/textbuttom.dart';
 import 'package:chatapp/cores/keys/keys.dart';
 import 'package:chatapp/cores/logic/showsnackbar.dart';
+import 'package:chatapp/cubit/chat/chat_cubit.dart';
 import 'package:chatapp/cubit/sign_in/sign_in_cubit.dart';
 import 'package:chatapp/views/chat.dart';
 import 'package:chatapp/views/register.dart';
@@ -37,6 +38,7 @@ class _SignInViewState extends State<SignInView> {
                   Showmessage(context, message: state.errorMessage);
                 }
                 if (state is SignInSuccess) {
+                  BlocProvider.of<ChatCubit>(context).getMessages();
                   Showmessage(context, message: 'login');
                   Navigator.pushReplacementNamed(context, ChatView.id,
                       arguments: email);

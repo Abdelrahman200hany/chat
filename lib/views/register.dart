@@ -3,6 +3,7 @@ import 'package:chatapp/cores/costomwidgets/buttoms.dart';
 import 'package:chatapp/cores/costomwidgets/textbuttom.dart';
 import 'package:chatapp/cores/keys/keys.dart';
 import 'package:chatapp/cores/logic/showsnackbar.dart';
+import 'package:chatapp/cubit/chat/chat_cubit.dart';
 import 'package:chatapp/cubit/register/register_cubit.dart';
 import 'package:chatapp/views/chat.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class _RegisterViewState extends State<RegisterView> {
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state is RegisterSuccess) {
+          BlocProvider.of<ChatCubit>(context).getMessages();
           Navigator.pushReplacementNamed(context, ChatView.id,
               arguments: email);
         }

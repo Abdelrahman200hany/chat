@@ -1,14 +1,15 @@
 import 'package:chatapp/cores/costomwidgets/responsemessage.dart';
 import 'package:chatapp/cores/keys/keys.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:chatapp/cubit/chat/chat_cubit.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CostomtextfieldChat extends StatelessWidget {
   CostomtextfieldChat({super.key, required this.email});
   var email;
 
-  CollectionReference messages =
-      FirebaseFirestore.instance.collection(kMessageCollection);
+
   TextEditingController controller = TextEditingController();
   final scrollController = ResponseMessages.scrollController;
 
@@ -19,11 +20,7 @@ class CostomtextfieldChat extends StatelessWidget {
       child: TextField(
         controller: controller,
         onSubmitted: (value) {
-          messages.add({
-            'message': value,
-            "createdAt": DateTime.now(),
-            'id': email,
-          });
+   BlocProvider.of<ChatCubit>(context).sendMessage(message: value, email: email);
           controller.clear();
           scrollController.animateTo(0,
               duration: const Duration(seconds: 1),
@@ -38,13 +35,7 @@ class CostomtextfieldChat extends StatelessWidget {
                   final messageText = controller.text;
                   if (messageText.isNotEmpty) {
                     //check there was text on the textfield
-                    messages.add({
-                      "message": messageText,
-                      // to add the time of sent message to use it after
-                      "createdAt": DateTime.now(),
-                      // to add email to the message to can  use it after
-                      'id': email,
-                    });
+               BlocProvider.of<ChatCubit>(context).sendMessage(message: messageText, email: email);
                     // to clear the text in text form
                     controller.clear();
                     scrollController.animateTo(0,
